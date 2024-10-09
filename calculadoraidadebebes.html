@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Idade Correta de Bebês Prematuros</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="blurb">
+            <h1>Calculadora Idade Correta de Bebês Prematuros</h1>
+            <form id="calculadora">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento">
+                <label for="semanasGestacao">Semanas de Gestação:</label>
+                <input type="number" id="semanasGestacao" name="semanasGestacao" min="20" max="40">
+                <button type="button" onclick="calcularIdade()">Calcular</button>
+            </form>
+            <p id="resultado"></p>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="mailto:juliannelaurindo@gmail.com">email</a></li>
+            <li><a href="https://www.linkedin.com/in/juliannesa/">linkedin</a></li>
+        </ul>
+    </footer>
+    <script>
+        function calcularIdade() {
+            const dataNascimento = new Date(document.getElementById('dataNascimento').value);
+            const semanasGestacao = parseInt(document.getElementById('semanasGestacao').value);
+            const hoje = new Date();
+            if ( semanasGestacao > 37) {
+              const idadeCorrigida = new Date(hoje - dataNascimento);
+              idadeCorrigida.setDate(idadeCorrigida.getDate() + (40 - semanasGestacao) * 7);
+              document.getElementById('resultado').innerText = 'Idade Corrigida: ${Math.floor(idadeCorrigida / (1000 * 60 * 60 * 24 * 30))} meses';
+            }
+            else { 
+               document.getElementById('resultado').innerText = 'Idade nao precisa ser corrigida';
+            }
+        }
+    </script>
+</body>
+</html>
