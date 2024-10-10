@@ -23,12 +23,22 @@
             const semanasGestacao = parseInt(document.getElementById('semanasGestacao').value);
             const hoje = new Date();
             const diff = hoje - dataNascimento;
-            const diffInDays = diff / (1000 * 60 * 60 * 24);
+            const diffInDays = Math.trunc(diff / (1000 * 60 * 60 * 24));
 
             let resultText = '';
-            
+            const ano = diffInDays/365;
+            if(ano>4){
+                const semanas = ((diffInDays%365)-(ano/4))/7;
+                const dias = ((diffInDays%365)-(ano/4))%7;
+            }
+            if(semanasGestacao < 37) {
+                resultText  = ano + " anos, " + semanas-(40-semanasGestacao) + " semanas, e "  + dias + " dias";
+            }
+            else{
+                resultText  = ano + " anos, " + semanas + " semanas, e "  + dias + " dias";
+            }
 
-            document.getElementById('resultado').innerText = Math.trunc(diffInDays);
+            document.getElementById('resultado').innerText = ;
         }
     </script>
 </body>
