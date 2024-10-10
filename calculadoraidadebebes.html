@@ -30,7 +30,7 @@
 
             if (semanasGestacao < 37) {
                 if (idadeCorrigida.getUTCMonth() >= (40 - semanasGestacao)) {
-                    resultText = age + " anos, " + idadeCorrigida.getUTCMonth() + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
+                    resultText = age + " anos, " + (idadeCorrigida.getUTCMonth() % 12) + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
                 }
                 else {
                     if(age>=1) {
