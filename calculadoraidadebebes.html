@@ -33,7 +33,7 @@
                     resultText = age + " anos, " + idadeCorrigida.getUTCMonth() + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
                 }
                 else {
-                    if(age>1) {
+                    if(age>=1) {
                         resultText = (age-1) + " anos, " + (idadeCorrigida.getUTCMonth() + semanasGestacao % 12) + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
                     }
                      else {
