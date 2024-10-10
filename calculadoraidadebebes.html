@@ -23,13 +23,12 @@
             const semanasGestacao = parseInt(document.getElementById('semanasGestacao').value);
             const hoje = new Date();
             const diff = hoje - dataNascimento;
-            const idadeCorrigida = new Date(diff);
-            const age = Math.abs(idadeCorrigida.getUTCFullYear() - 1970);
+            const diffInDays = diff / (1000 * 60 * 60 * 24);
 
             let resultText = '';
-            resultText = age;
+            
 
-            document.getElementById('resultado').innerText = resultText;
+            document.getElementById('resultado').innerText = diffInDays;
         }
     </script>
 </body>
