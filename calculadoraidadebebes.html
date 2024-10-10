@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Calculadora Idade Correta de Bebês Prematuros</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
     <div class="container">
@@ -29,14 +28,25 @@
             const dataNascimento = new Date(document.getElementById('dataNascimento').value);
             const semanasGestacao = parseInt(document.getElementById('semanasGestacao').value);
             const hoje = new Date();
-            if ( semanasGestacao > 37) {
-              const idadeCorrigida = new Date(hoje - dataNascimento);
-              idadeCorrigida.setDate(idadeCorrigida.getDate() + (40 - semanasGestacao) * 7);
-              document.getElementById('resultado').innerText = 'Idade Corrigida: ${Math.floor(idadeCorrigida / (1000 * 60 * 60 * 24 * 30))} meses';
+            const diff = hoje - dataNascimento;
+            const idadeCorrigida = new Date(diff);
+            const age = Math.abs(idadeCorrigida.getUTCFullYear() - 1970);
+
+            let resultText = '';
+
+            if (semanasGestacao < 37) {
+                if (idadeCorrigida.getUTCMonth() >= (40 - semanasGestacao)) {
+                    resultText = age + " anos, " + idadeCorrigida.getUTCMonth() + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
+                }
+                else {
+                    resultText = (age-1) + " anos, " + (idadeCorrigida.getUTCMonth() + semanasGestacao % 12) + " meses, e " + (idadeCorrigida.getUTCDate() - 1) + " dias";
+                }
             }
-            else { 
-               document.getElementById('resultado').innerText = 'Idade nao precisa ser corrigida';
+            else {
+                resultText = 'Idade nao precisa ser corrigida';
             }
+
+            document.getElementById('resultado').innerText = resultText;
         }
     </script>
 </body>
