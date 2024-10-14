@@ -31,6 +31,10 @@
                 const semanas = ((diffInDays%365)-(ano/4))/7;
                 const dias = ((diffInDays%365)-(ano/4))%7;
             }
+            else {
+                semanas =((diffInDays % 365) / 7);
+                dias = (diffInDays % 365) % 7;
+            }
             if(semanasGestacao < 37) {
                 resultText  = ano + " anos, " + semanas-(40-semanasGestacao) + " semanas, e "  + dias + " dias";
             }
